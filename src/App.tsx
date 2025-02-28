@@ -19,6 +19,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { CredentialResponse } from "./interfaces/google";
 import { parseJwt } from "./utils/parse-jwt";
+import { ThemedLayoutV2 } from "@refinedev/antd";
+
 
 const API_URL = "https://your-graphql-url/graphql";
 
@@ -38,10 +40,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <RefineKbarProvider>
-        <ColorModeContextProvider>
-          <AntdApp>
-            <DevtoolsProvider>
+
               <Refine
                 dataProvider={gqlDataProvider}
                 notificationProvider={useNotificationProvider}
@@ -62,10 +61,7 @@ function App() {
                 <DocumentTitleHandler />
               </Refine>
               <DevtoolsPanel />
-            </DevtoolsProvider>
-          </AntdApp>
-        </ColorModeContextProvider>
-      </RefineKbarProvider>
+          
     </BrowserRouter>
   );
 }
