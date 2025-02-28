@@ -2,14 +2,12 @@ import {
   AuthBindings,
   GitHubBanner,
   Refine,
-  WelcomePage,
 } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
-
+import WelcomePage from "./pages/welcome";
 import dataProvider, { GraphQLClient } from "@refinedev/graphql";
 import routerBindings, {
   DocumentTitleHandler,
