@@ -14,6 +14,15 @@
       property="og:image"
       content="https://refine.dev/img/refine_social.png"
     />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        important: true, // Esto ayuda a que los estilos de Tailwind predominen
+      }
+    </script>
     <meta
       data-rh="true"
       name="twitter:image"
