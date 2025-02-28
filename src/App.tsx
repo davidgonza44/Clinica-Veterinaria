@@ -15,11 +15,12 @@ import routerBindings, {
 } from "@refinedev/react-router";
 import { App as AntdApp } from "antd";
 import axios from "axios";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { CredentialResponse } from "./interfaces/google";
 import { parseJwt } from "./utils/parse-jwt";
 import { ThemedLayoutV2 } from "@refinedev/antd";
+import CustomHeader from "./components/Home/header";
 
 
 const API_URL = "https://your-graphql-url/graphql";
@@ -41,27 +42,28 @@ function App() {
   return (
     <BrowserRouter>
 
-              <Refine
-                dataProvider={gqlDataProvider}
-                notificationProvider={useNotificationProvider}
-                routerProvider={routerBindings}
-                // authProvider={authProvider}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "3LAt8R-xrB12o-STDWQG",
-                }}
-              >
-                <Routes>
-                  <Route index element={<WelcomePage />} />
-                </Routes>
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-              <DevtoolsPanel />
-          
+      <Refine
+        dataProvider={gqlDataProvider}
+        notificationProvider={useNotificationProvider}
+        routerProvider={routerBindings}
+        options={{
+          syncWithLocation: true,
+          warnWhenUnsavedChanges: true,
+          useNewQueryKeys: true,
+          projectId: "3LAt8R-xrB12o-STDWQG",
+        }}
+      >
+        <Routes>
+          <Route element={
+            <ThemedLayoutV2 Header={() => <CustomHeader />}>
+              <Outlet />
+            </ThemedLayoutV2>}>
+            <Route index element={<WelcomePage />} />
+          </Route>
+        </Routes>
+      </Refine>
+      <DevtoolsPanel />
+
     </BrowserRouter>
   );
 }
