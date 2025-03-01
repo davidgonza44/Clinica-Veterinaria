@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "src/themeConfig.js"],
   "references": [
     {
       "path": "./tsconfig.node.json"

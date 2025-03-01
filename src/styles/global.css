@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+
+::root{
+    --font-anton : 'Anton', sans-serif;
+    --font-instrument : 'Instrument Sans', sans-serif;
+    --font-fredoka : 'Fredoka', sans-serif
+}
+
+
+body, html, .ant-layout, .ant-typography, .ant-input, .ant-select{
+    font-family : var(--font-instrument)
+}
+
+h1,h2,h3,h4,h5,h6, .ant-typography-title, .ant-page-header-heading-title, .ant-card-head-title{
+    font-family: var(--font-fredoka)
+}
+
+
+.font-anton{
+    font-family : 'Anton', sans-serif !important;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+}
+
+
+.font-instrument{
+    font-family : 'Instruments Sans', sans-serif !important
+}
+
+.font-fredoka{
+    font-family: 'Fredoka', sans-serif !important;
+}

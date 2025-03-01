@@ -3,6 +3,8 @@ import {
   GitHubBanner,
   Refine,
 } from "@refinedev/core";
+import { RefineThemes } from "@refinedev/antd";
+import { ConfigProvider } from "antd";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { useNotificationProvider } from "@refinedev/antd";
@@ -20,8 +22,9 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import { CredentialResponse } from "./interfaces/google";
 import { parseJwt } from "./utils/parse-jwt";
 import { ThemedLayoutV2 } from "@refinedev/antd";
-import CustomHeader from "./components/Home/header";
+import CustomHeader from "./components/layout/Header";
 
+import "./styles/global.css";
 
 const API_URL = "https://your-graphql-url/graphql";
 
@@ -36,11 +39,34 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
+const customTheme = {
+    ...RefineThemes.Blue,
+    token : {
+      ...RefineThemes.Blue.token,
+      fontFamily : "var(--font-instrument)",
+      fontSize : 16
+    },
+    components : {
+      ...RefineThemes.Blue.components,
+      Typography : {
+        ...RefineThemes.Blue.components?.Typography,
+        titleFontFamily : "var(--font-fredoka)"
+      }
+    },
+    Button : {
+      ...RefineThemes.Blue.components?.Button,
+      fontFamily : "var(--font-instrument",
+      fontWeight : 600
+    }
+}
+
+
 function App() {
 
 
   return (
     <BrowserRouter>
+      <ConfigProvider theme={customTheme}>
 
       <Refine
         dataProvider={gqlDataProvider}
@@ -63,7 +89,7 @@ function App() {
         </Routes>
       </Refine>
       <DevtoolsPanel />
-
+      </ConfigProvider>
     </BrowserRouter>
   );
 }
